@@ -29,6 +29,7 @@ namespace WindowsFormsApp1.Data_Access_Layer
                 sw.WriteLine($"{Username},{Password}");
                 sw.Close();
                 fs.Close();
+                MessageBox.Show($"User {Username} Registered");
             }
         }
 

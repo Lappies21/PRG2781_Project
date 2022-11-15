@@ -54,9 +54,12 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pbSutdentImage = new System.Windows.Forms.PictureBox();
-            this.txtStudentID = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.dtpDoB = new System.Windows.Forms.DateTimePicker();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblFileName = new System.Windows.Forms.Label();
+            this.btnModules = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSutdentImage)).BeginInit();
@@ -64,7 +67,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(119, 29);
+            this.txtSearch.Location = new System.Drawing.Point(119, 48);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 20);
             this.txtSearch.TabIndex = 37;
@@ -74,7 +77,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(18, 32);
+            this.label6.Location = new System.Drawing.Point(18, 51);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 13);
             this.label6.TabIndex = 36;
@@ -82,14 +85,14 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(119, 88);
+            this.txtName.Location = new System.Drawing.Point(119, 81);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(191, 20);
             this.txtName.TabIndex = 35;
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(119, 114);
+            this.txtSurname.Location = new System.Drawing.Point(119, 107);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(191, 20);
             this.txtSurname.TabIndex = 34;
@@ -98,7 +101,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(27, 117);
+            this.label3.Location = new System.Drawing.Point(27, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 29;
@@ -108,7 +111,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 91);
+            this.label2.Location = new System.Drawing.Point(27, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 28;
@@ -118,7 +121,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(700, 393);
+            this.btnUpdate.Location = new System.Drawing.Point(696, 428);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 24;
@@ -130,7 +133,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(235, 27);
+            this.btnSearch.Location = new System.Drawing.Point(235, 46);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 26;
@@ -142,7 +145,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(781, 393);
+            this.btnDelete.Location = new System.Drawing.Point(777, 428);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 25;
@@ -154,7 +157,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnView.Location = new System.Drawing.Point(619, 393);
+            this.btnView.Location = new System.Drawing.Point(615, 428);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(75, 23);
             this.btnView.TabIndex = 23;
@@ -166,7 +169,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(518, 393);
+            this.btnCreate.Location = new System.Drawing.Point(514, 428);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(93, 23);
             this.btnCreate.TabIndex = 22;
@@ -177,9 +180,9 @@ namespace WindowsFormsApp1.Presentation_Layer
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvStudents);
-            this.groupBox1.Location = new System.Drawing.Point(334, 3);
+            this.groupBox1.Location = new System.Drawing.Point(334, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(677, 379);
+            this.groupBox1.Size = new System.Drawing.Size(677, 400);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Data";
@@ -189,7 +192,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStudents.Location = new System.Drawing.Point(6, 19);
             this.dgvStudents.Name = "dgvStudents";
-            this.dgvStudents.Size = new System.Drawing.Size(665, 354);
+            this.dgvStudents.Size = new System.Drawing.Size(665, 375);
             this.dgvStudents.TabIndex = 0;
             this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             // 
@@ -199,7 +202,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Cornsilk;
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(12, 31);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(316, 44);
             this.groupBox2.TabIndex = 40;
@@ -210,7 +213,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(29, 144);
+            this.label1.Location = new System.Drawing.Point(29, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 41;
@@ -220,10 +223,11 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.cmbGender.FormattingEnabled = true;
             this.cmbGender.Items.AddRange(new object[] {
+            "",
             "Male",
             "Female",
             "Other"});
-            this.cmbGender.Location = new System.Drawing.Point(119, 299);
+            this.cmbGender.Location = new System.Drawing.Point(119, 308);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(191, 21);
             this.cmbGender.TabIndex = 54;
@@ -232,7 +236,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(29, 299);
+            this.label9.Location = new System.Drawing.Point(29, 308);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 13);
             this.label9.TabIndex = 53;
@@ -242,7 +246,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(29, 265);
+            this.label8.Location = new System.Drawing.Point(29, 274);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(31, 13);
             this.label8.TabIndex = 52;
@@ -250,7 +254,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             // txtModuleCode
             // 
-            this.txtModuleCode.Location = new System.Drawing.Point(119, 422);
+            this.txtModuleCode.Location = new System.Drawing.Point(119, 431);
             this.txtModuleCode.Name = "txtModuleCode";
             this.txtModuleCode.Size = new System.Drawing.Size(191, 20);
             this.txtModuleCode.TabIndex = 51;
@@ -259,7 +263,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(27, 425);
+            this.label7.Location = new System.Drawing.Point(27, 434);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 13);
             this.label7.TabIndex = 50;
@@ -267,14 +271,14 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(119, 335);
+            this.txtPhone.Location = new System.Drawing.Point(119, 344);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(191, 20);
             this.txtPhone.TabIndex = 49;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(119, 361);
+            this.txtAddress.Location = new System.Drawing.Point(119, 370);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(191, 55);
@@ -284,7 +288,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(27, 364);
+            this.label5.Location = new System.Drawing.Point(27, 373);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 47;
@@ -294,7 +298,7 @@ namespace WindowsFormsApp1.Presentation_Layer
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(27, 338);
+            this.label4.Location = new System.Drawing.Point(27, 347);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 46;
@@ -303,46 +307,79 @@ namespace WindowsFormsApp1.Presentation_Layer
             // pbSutdentImage
             // 
             this.pbSutdentImage.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pbSutdentImage.Location = new System.Drawing.Point(119, 144);
+            this.pbSutdentImage.Location = new System.Drawing.Point(119, 137);
             this.pbSutdentImage.Name = "pbSutdentImage";
             this.pbSutdentImage.Size = new System.Drawing.Size(100, 104);
+            this.pbSutdentImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSutdentImage.TabIndex = 56;
             this.pbSutdentImage.TabStop = false;
+            this.pbSutdentImage.Click += new System.EventHandler(this.pbSutdentImage_Click);
             // 
-            // txtStudentID
+            // dtpDoB
             // 
-            this.txtStudentID.Location = new System.Drawing.Point(119, 62);
-            this.txtStudentID.Name = "txtStudentID";
-            this.txtStudentID.ReadOnly = true;
-            this.txtStudentID.Size = new System.Drawing.Size(191, 20);
-            this.txtStudentID.TabIndex = 58;
+            this.dtpDoB.Location = new System.Drawing.Point(119, 273);
+            this.dtpDoB.Name = "dtpDoB";
+            this.dtpDoB.Size = new System.Drawing.Size(191, 20);
+            this.dtpDoB.TabIndex = 59;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.SystemColors.Control;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(13, 65);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(225, 182);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(98, 13);
-            this.label10.TabIndex = 57;
-            this.label10.Text = "Student Number";
+            this.label10.Size = new System.Drawing.Size(102, 13);
+            this.label10.TabIndex = 60;
+            this.label10.Text = "<- Click to Select";
             // 
-            // dtpDoB
+            // lblFileName
             // 
-            this.dtpDoB.Location = new System.Drawing.Point(119, 264);
-            this.dtpDoB.Name = "dtpDoB";
-            this.dtpDoB.Size = new System.Drawing.Size(191, 20);
-            this.dtpDoB.TabIndex = 59;
+            this.lblFileName.AutoSize = true;
+            this.lblFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFileName.Location = new System.Drawing.Point(29, 246);
+            this.lblFileName.Name = "lblFileName";
+            this.lblFileName.Size = new System.Drawing.Size(63, 13);
+            this.lblFileName.TabIndex = 61;
+            this.lblFileName.Text = "File Name";
+            // 
+            // btnModules
+            // 
+            this.btnModules.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnModules.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModules.Location = new System.Drawing.Point(76, 2);
+            this.btnModules.Name = "btnModules";
+            this.btnModules.Size = new System.Drawing.Size(58, 23);
+            this.btnModules.TabIndex = 63;
+            this.btnModules.Text = "Modules";
+            this.btnModules.UseVisualStyleBackColor = true;
+            this.btnModules.Click += new System.EventHandler(this.btnModules_Click);
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Location = new System.Drawing.Point(12, 2);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(58, 23);
+            this.btnLogOut.TabIndex = 64;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // Students
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1023, 568);
-            this.Controls.Add(this.dtpDoB);
-            this.Controls.Add(this.txtStudentID);
+            this.ClientSize = new System.Drawing.Size(1023, 485);
+            this.Controls.Add(this.btnLogOut);
+            this.Controls.Add(this.btnModules);
+            this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.dtpDoB);
             this.Controls.Add(this.pbSutdentImage);
             this.Controls.Add(this.cmbGender);
             this.Controls.Add(this.label9);
@@ -404,8 +441,11 @@ namespace WindowsFormsApp1.Presentation_Layer
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pbSutdentImage;
-        private System.Windows.Forms.TextBox txtStudentID;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dtpDoB;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblFileName;
+        private System.Windows.Forms.Button btnModules;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

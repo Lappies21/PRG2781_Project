@@ -8,17 +8,17 @@ namespace WindowsFormsApp1.Business_logic
 {
     class Student
     {
-        private string studentNumber;
+        private int studentNumber;
         private string studentName;
         private string studentSurname;
         private string studentImage;
-        private string dob;
+        private DateTime dob;
         private string gender;
         private string phone;
         private string address;
         private string moduleCodes;
 
-        public Student(string studentNumber, string studentName, string studentSurname, string studentImage, string dob, string gender, string phone, string address, string moduleCodes)
+        public Student(int studentNumber, string studentName, string studentSurname, string studentImage, DateTime dob, string gender, string phone, string address, string moduleCodes)
         {
             this.studentNumber = studentNumber;
             this.studentName = studentName;
@@ -31,7 +31,7 @@ namespace WindowsFormsApp1.Business_logic
             this.moduleCodes = moduleCodes;
         }
 
-        public string StudentNumber
+        public int StudentNumber
         {
             get { return studentNumber; }
             set { studentNumber = value; }
@@ -51,7 +51,7 @@ namespace WindowsFormsApp1.Business_logic
             get { return studentImage; }
             set { studentImage = value; }
         }
-        public string Dob 
+        public DateTime Dob 
         {
             get { return dob; }
             set { dob = value; }
