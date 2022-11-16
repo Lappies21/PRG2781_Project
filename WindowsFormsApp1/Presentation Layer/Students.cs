@@ -32,6 +32,7 @@ namespace WindowsFormsApp1.Presentation_Layer
 
         private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataHandler dh = new DataHandler();
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dgvStudents.Rows[e.RowIndex];
@@ -46,40 +47,77 @@ namespace WindowsFormsApp1.Presentation_Layer
                 txtAddress.Text = row.Cells[7].Value.ToString();
                 txtModuleCode.Text = row.Cells[8].Value.ToString();
             }
+            dh.ViewImage(pbSutdentImage);
         }
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            Student student = new Student(int.Parse(txtSearch.Text), txtName.Text,txtSurname.Text, Filename, DateTime.Parse(dtpDoB.Text),cmbGender.Text,txtPhone.Text,txtAddress.Text,txtModuleCode.Text);
-            DataHandler dh = new DataHandler();
-            dh.InsertStudent(student.StudentNumber, student.StudentName, student.StudentSurname, student.StudentImage, student.Dob, student.Gender, student.Phone, student.Address);
+            try
+            {
+                Student student = new Student(int.Parse(txtSearch.Text), txtName.Text, txtSurname.Text, Filename, dtpDoB.Value, cmbGender.Text, txtPhone.Text, txtAddress.Text, txtModuleCode.Text);
+                DataHandler dh = new DataHandler();
+                dh.InsertStudent(student.StudentNumber, student.StudentName, student.StudentSurname, student.StudentImage, student.Dob, student.Gender, student.Phone, student.Address, student.ModuleCodes, pbSutdentImage);
+            }
+            catch
+            {
+                MessageBox.Show("Creation could not be completed");
+
+            }
+            clear();
         }
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            Student student = new Student(int.Parse(txtSearch.Text), txtName.Text, txtSurname.Text, Filename, DateTime.Parse(dtpDoB.Text), cmbGender.Text, txtPhone.Text, txtAddress.Text, txtModuleCode.Text);
+
             DataHandler dh = new DataHandler();
             dgvStudents.DataSource = dh.ViewStudent();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Student student = new Student(int.Parse(txtSearch.Text), txtName.Text, txtSurname.Text, Filename, DateTime.Parse(dtpDoB.Text), cmbGender.Text, txtPhone.Text, txtAddress.Text, txtModuleCode.Text);
-            DataHandler dh = new DataHandler();
-            dh.UpdateStudent(student.StudentNumber, student.StudentName, student.StudentSurname, student.StudentImage, student.Dob, student.Gender, student.Phone, student.Address);
+            try
+            {
+                Student student = new Student(int.Parse(txtSearch.Text), txtName.Text, txtSurname.Text, Filename, dtpDoB.Value, cmbGender.Text, txtPhone.Text, txtAddress.Text, txtModuleCode.Text);
+                DataHandler dh = new DataHandler();
+                dh.UpdateStudent(student.StudentNumber, student.StudentName, student.StudentSurname, student.StudentImage, student.Dob, student.Gender, student.Phone, student.Address, student.ModuleCodes, pbSutdentImage);
+
+
+            }
+            catch
+            {
+                MessageBox.Show("Update failed");
+
+            }
+            clear();
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Student student = new Student(int.Parse(txtSearch.Text), txtName.Text, txtSurname.Text, Filename, DateTime.Parse(dtpDoB.Text), cmbGender.Text, txtPhone.Text, txtAddress.Text, txtModuleCode.Text);
+
             DataHandler dh = new DataHandler();
-            dh.DeleteStudent(student.StudentNumber, student.StudentName, student.StudentSurname, student.StudentImage, student.Dob, student.Gender, student.Phone, student.Address);
+            try
+            {
+                if (txtSearch.Text == string.Empty)
+                {
+                    MessageBox.Show("Fields Cannot be empty");
+                }
+                else
+                {
+                    dh.DeleteStudent(int.Parse(txtSearch.Text), txtName.Text);
+                    clear();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Fields Cannot be empty");
+            }
         }
 
-       
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             DataHandler dh = new DataHandler();
-            dh.SearchStudent(txtSearch.Text,dgvStudents);
+            dh.SearchStudent(txtSearch.Text, dgvStudents);
 
         }
 
@@ -107,6 +145,27 @@ namespace WindowsFormsApp1.Presentation_Layer
             Login login = new Login();
             this.Hide();
             login.Show();
+        }
+
+        public void clear()
+        {
+            txtSearch.Text = "";
+            txtName.Text = "";
+            txtSurname.Text = "";
+            lblFileName.Text = "";
+            lblFileName.Visible = false;
+            pbSutdentImage.Image = null;
+            dtpDoB.ResetText();
+            cmbGender.SelectedItem = "";
+            txtPhone.Text = "";
+            txtAddress.Text = "";
+            txtModuleCode.Text = "";
+        }
+
+        private void btnViewImage_Click(object sender, EventArgs e)
+        {
+            DataHandler dh = new DataHandler();
+            dh.ViewImage(pbSutdentImage);
         }
     }
 }

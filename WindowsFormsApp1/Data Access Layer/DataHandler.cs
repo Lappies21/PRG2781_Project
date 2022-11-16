@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Drawing;
 
 namespace WindowsFormsApp1.Data_Access_Layer
 {
@@ -24,6 +27,35 @@ namespace WindowsFormsApp1.Data_Access_Layer
             }
         }
 
+        public void ViewImage(PictureBox pbStudentImage)
+        {
+            using (con)
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT Image FROM dbo.TableStudents ORDER BY StudentNumber ", con);
+                    SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    adapt.Fill(ds, "TableStudents");
+                    int count = ds.Tables["TableStudents"].Rows.Count;
+
+                    if (count > 0)
+                    {
+                        Byte[] bytedata = new byte[0];
+                        bytedata = (Byte[])(ds.Tables["TableStudents"].Rows[count - 1]["Image"]);
+                        MemoryStream ms = new MemoryStream(bytedata);
+                        pbStudentImage.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Image not found");
+                }
+                con.Close();
+            }
+        }
+
         public void SearchStudent(string studentNumber,DataGridView dgvDisplay)
         {
             using (con)
@@ -31,14 +63,14 @@ namespace WindowsFormsApp1.Data_Access_Layer
                 try
                 {
                     con.Open();
-                    SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM dbo.TableStudents where [StudentNumber] = {studentNumber}'", con);
+                    SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM dbo.TableStudents where [StudentNumber] = '{studentNumber}'", con);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
                     dgvDisplay.DataSource = dt;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show($"Student Number: {studentNumber} not found!");
                 }
                 finally
                 {
@@ -47,25 +79,63 @@ namespace WindowsFormsApp1.Data_Access_Layer
             }
         }
 
-        public void InsertStudent(int _studentNumber, string _studentName, string _studentSurname, string _studentImage, DateTime _dateOfBirth, string _gender, string _phone, string _address)
+        public void InsertStudent(int _studentNumber, string _studentName, string _studentSurname, string _studentImage, DateTime _dateOfBirth, string _gender, string _phone, string _address, string _modulecode,PictureBox pbStudentImage)
         {
-            string insertStudent = @"INSERT INTO dbo.TableStudents SET StudentNumber=('" + _studentNumber + "'), StudentName=('" + _studentName + "'), StudentSurname=('" + _studentSurname + "'), StudentImage=('" + _studentImage + "'), DateOfBirth=('" + _dateOfBirth + "'), Gender=('" + _gender + "'), Phone=('" + _phone + "'), Address=('" + _address + "'), ";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(insertStudent, con);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            using (con)
+            {
+                try
+                {
+                    string insertStudent = @"INSERT INTO dbo.TableStudents (StudentNumber,Name,Surname,Image,DoB,Gender,Phone,Address,ModuleCode) Values('" + _studentNumber + "','" + _studentName + "','" + _studentSurname + "',@Image,'" + _dateOfBirth + "','" + _gender + "','" + _phone + "','" + _address + "','" + _modulecode + "')";
+                    string studnetIMGPath = $"@{_studentImage}";
+
+                    MemoryStream ms = new MemoryStream();
+                    pbStudentImage.Image.Save(ms,ImageFormat.Png);
+
+                    Byte[] bytData = new byte[ms.Length];
+                    ms.Position = 0;
+                    ms.Read(bytData,0,Convert.ToInt32(ms.Length));
+                    SqlParameter par = new SqlParameter("@Image",SqlDbType.VarBinary,bytData.Length,ParameterDirection.Input,false,0,0,null,DataRowVersion.Current,bytData);
+
+                    SqlCommand cmd = new SqlCommand(insertStudent, con);
+                    cmd.Parameters.Add(par);
+
+                    
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show($"Student {_studentName} Added");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Can't Insert Duplicate Student");
+                }
+                finally 
+                {
+                    con.Close();
+                }
+                
+            }
         }
 
-        public void UpdateStudent(int _studentNumber, string _studentName, string _studentSurname, string _studentImage, DateTime _dateOfBirth, string _gender, string _phone, string _address)
+        public void UpdateStudent(int _studentNumber, string _studentName, string _studentSurname, string _studentImage, DateTime _dateOfBirth, string _gender, string _phone, string _address, string _modulecode, PictureBox pbStudentImage)
         {
-            string qryUpdate = @"UPDATE dbo.TableStudents SET StudentNumber=('" + _studentNumber + "'), StudentName=('" + _studentName + "'), StudentSurname=('" + _studentSurname + "'), StudentImage=('" + _studentImage + "'), DateOfBirth=('" + _dateOfBirth + "'), Gender=('" + _gender + "'), Phone=('" + _phone + "'), Address=('" + _address + "'), ";
+            string qryUpdate = @"UPDATE dbo.TableStudents SET StudentNumber=('" + _studentNumber + "'), Name=('" + _studentName + "'), Surname=('" + _studentSurname + "'), Image= @Image, DoB=('" + _dateOfBirth + "'), Gender=('" + _gender + "'), Phone=('" + _phone + "'), Address=('" + _address + "'), ModuleCode=('" + _modulecode + "') ";
+            string studnetIMGPath = $"@{_studentImage}"; 
+
+            MemoryStream ms = new MemoryStream();
+            pbStudentImage.Image.Save(ms, ImageFormat.Png);
+
+            Byte[] bytData = new byte[ms.Length];
+            ms.Position = 0;
+            ms.Read(bytData, 0, Convert.ToInt32(ms.Length));
+            SqlParameter par = new SqlParameter("@Image", SqlDbType.VarBinary, bytData.Length, ParameterDirection.Input, false, 0, 0, null, DataRowVersion.Current, bytData);
+
             con.Open();
             SqlCommand cmd = new SqlCommand(qryUpdate, con);
-
+            cmd.Parameters.Add(par);
             try
             {
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Update Successfull!");
+                MessageBox.Show($" {_studentName} Updated Successfull!");
             }
             catch (Exception ex)
             {
@@ -77,16 +147,16 @@ namespace WindowsFormsApp1.Data_Access_Layer
             }
         }
 
-        public void DeleteStudent(int _studentNumber, string _studentName, string _studentSurname, string _studentImage, DateTime _dateOfBirth, string _gender, string _phone, string _address)
+        public void DeleteStudent(int _studentNumber, string _studentName)
         {
-            string DeleteStudent = @"DELETE FROM dbo.TableStudents WHERE StudentNumber=('" + _studentNumber + "'), StudentName=('" + _studentName + "'), StudentSurname=('" + _studentSurname + "'), StudentImage=('" + _studentImage + "'), DateOfBirth=('" + _dateOfBirth + "'), Gender=('" + _gender + "'), Phone=('" + _phone + "'), Address=('" + _address + "'),";
+            string DeleteStudent = @"DELETE FROM dbo.TableStudents WHERE StudentNumber=('" + _studentNumber + "')";
             con.Open();
             SqlCommand cmd = new SqlCommand(DeleteStudent, con);
 
             try
             {
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Deleted Successfully!");
+                MessageBox.Show($"Deleted Student {_studentName} Successfully!");
             }
             catch (Exception)
             {
@@ -110,6 +180,7 @@ namespace WindowsFormsApp1.Data_Access_Layer
                     con.Open();
                     SqlCommand cmd = new SqlCommand($"Insert Into dbo.Module (ModuleCode,ModuleName,ModuleDescription,ResourceLinks) Values('{ModuleCode}','{ModuleName}','{ModuleDescription}','{ResourceLinks}')", con);
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show($"{ModuleCode} Created");
                 }
                 catch (Exception)
                 {
@@ -129,8 +200,9 @@ namespace WindowsFormsApp1.Data_Access_Layer
                 try
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand($"insert into dbo.Module set ModuleName='{ModuleName}',ModuleDescription ='{ModuleDescription}',ResourceLinks='{ResourceLinks}' where ModuleCode = '{ModuleCode}'", con);
+                    SqlCommand cmd = new SqlCommand($"update dbo.Module set ModuleName='{ModuleName}',ModuleDescription ='{ModuleDescription}',ResourceLinks='{ResourceLinks}' where ModuleCode = '{ModuleCode}'", con);
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show($"Module {ModuleCode} Updated");
                 }
                 catch (Exception)
                 {
@@ -152,6 +224,7 @@ namespace WindowsFormsApp1.Data_Access_Layer
                     con.Open();
                     SqlCommand cmd = new SqlCommand($"delete from dbo.Module where ModuleCode = '{ModuleCode}'", con);
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show($"Module {ModuleCode} Deleted");
                 }
                 catch (Exception)
                 {
@@ -171,7 +244,7 @@ namespace WindowsFormsApp1.Data_Access_Layer
                     try
                     {
                         con.Open();
-                        SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM dbo.Module where [ModuleCode] = {ModuleCode}'", con);
+                        SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM dbo.Module where [ModuleCode] = '{ModuleCode}'", con);
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
                         dgvModules.DataSource = dt;

@@ -30,6 +30,12 @@ namespace WindowsFormsApp1.Presentation_Layer
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtModuleCode = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.txtModuleName = new System.Windows.Forms.TextBox();
             this.txtModuleDescription = new System.Windows.Forms.TextBox();
@@ -37,29 +43,21 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dgvModule = new System.Windows.Forms.DataGridView();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnView = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtModuleCode = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.dgvModule = new System.Windows.Forms.DataGridView();
+            this.btnView = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvModule)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvModule)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.btnView);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnUpdate);
-            this.groupBox1.Controls.Add(this.dgvModule);
             this.groupBox1.Controls.Add(this.btnCreate);
             this.groupBox1.Controls.Add(this.txtModuleName);
             this.groupBox1.Controls.Add(this.txtModuleDescription);
@@ -71,10 +69,78 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(975, 283);
+            this.groupBox1.Size = new System.Drawing.Size(518, 283);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox2.Controls.Add(this.btnSearch);
+            this.groupBox2.Controls.Add(this.txtModuleCode);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(6, 16);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(510, 58);
+            this.groupBox2.TabIndex = 26;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Search";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.White;
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSearch.Location = new System.Drawing.Point(415, 14);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(79, 32);
+            this.btnSearch.TabIndex = 27;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtModuleCode
+            // 
+            this.txtModuleCode.Location = new System.Drawing.Point(202, 24);
+            this.txtModuleCode.Name = "txtModuleCode";
+            this.txtModuleCode.Size = new System.Drawing.Size(203, 20);
+            this.txtModuleCode.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label2.Location = new System.Drawing.Point(4, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 20);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Module Code";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.White;
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnDelete.Location = new System.Drawing.Point(417, 233);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(79, 32);
+            this.btnDelete.TabIndex = 24;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.White;
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnUpdate.Location = new System.Drawing.Point(309, 233);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(84, 32);
+            this.btnUpdate.TabIndex = 23;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnCreate
             // 
@@ -144,94 +210,6 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.label3.TabIndex = 2;
             this.label3.Text = "Module Name";
             // 
-            // dgvModule
-            // 
-            this.dgvModule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvModule.Location = new System.Drawing.Point(531, 18);
-            this.dgvModule.Name = "dgvModule";
-            this.dgvModule.Size = new System.Drawing.Size(426, 189);
-            this.dgvModule.TabIndex = 22;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.White;
-            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnUpdate.Location = new System.Drawing.Point(309, 233);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(84, 32);
-            this.btnUpdate.TabIndex = 23;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.White;
-            this.btnDelete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnDelete.Location = new System.Drawing.Point(417, 233);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(79, 32);
-            this.btnDelete.TabIndex = 24;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnView
-            // 
-            this.btnView.BackColor = System.Drawing.Color.White;
-            this.btnView.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnView.Location = new System.Drawing.Point(705, 233);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(79, 32);
-            this.btnView.TabIndex = 25;
-            this.btnView.Text = "View";
-            this.btnView.UseVisualStyleBackColor = false;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox2.Controls.Add(this.btnSearch);
-            this.groupBox2.Controls.Add(this.txtModuleCode);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(6, 16);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(510, 58);
-            this.groupBox2.TabIndex = 26;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Search";
-            // 
-            // txtModuleCode
-            // 
-            this.txtModuleCode.Location = new System.Drawing.Point(202, 24);
-            this.txtModuleCode.Name = "txtModuleCode";
-            this.txtModuleCode.Size = new System.Drawing.Size(203, 20);
-            this.txtModuleCode.TabIndex = 11;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(4, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Module Code";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.White;
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSearch.Location = new System.Drawing.Point(415, 14);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(79, 32);
-            this.btnSearch.TabIndex = 27;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.Color.White;
@@ -256,11 +234,33 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
+            // dgvModule
+            // 
+            this.dgvModule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvModule.Location = new System.Drawing.Point(536, 27);
+            this.dgvModule.Name = "dgvModule";
+            this.dgvModule.Size = new System.Drawing.Size(447, 203);
+            this.dgvModule.TabIndex = 67;
+            // 
+            // btnView
+            // 
+            this.btnView.BackColor = System.Drawing.Color.White;
+            this.btnView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnView.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnView.Location = new System.Drawing.Point(719, 244);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(79, 32);
+            this.btnView.TabIndex = 66;
+            this.btnView.Text = "View";
+            this.btnView.UseVisualStyleBackColor = false;
+            // 
             // Module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(999, 319);
+            this.Controls.Add(this.dgvModule);
+            this.Controls.Add(this.btnView);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.groupBox1);
@@ -269,9 +269,9 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.Load += new System.EventHandler(this.Module_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvModule)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvModule)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -286,8 +286,6 @@ namespace WindowsFormsApp1.Presentation_Layer
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dgvModule;
-        private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -296,5 +294,7 @@ namespace WindowsFormsApp1.Presentation_Layer
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.DataGridView dgvModule;
+        private System.Windows.Forms.Button btnView;
     }
 }

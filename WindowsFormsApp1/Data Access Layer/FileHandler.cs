@@ -33,28 +33,30 @@ namespace WindowsFormsApp1.Data_Access_Layer
             }
         }
 
-        public void Read(string username, string password,Label msg,TextBox Username,TextBox Password)
+        public void Read(string username, string password,Label msg,TextBox Username,TextBox Password,TextBox ConfirmPassword)
         {
             if (File.Exists(filepath))
             {
                 FileStream fs = new FileStream(filepath, FileMode.OpenOrCreate);
                 StreamReader sr = new StreamReader(fs);
                 string[] text = sr.ReadToEnd().Split(',');
-                if (username == text[0] && password == text[1])
+                if (username != text[0] && password != text[1])
+                {
+                   
+                    msg.Visible = true;
+                    msg.Text = "Wrong Username Or Password";
+                    msg.ForeColor = System.Drawing.Color.Red;
+                    Username.ForeColor = System.Drawing.Color.Red;
+                    Password.ForeColor = System.Drawing.Color.Red;
+                    ConfirmPassword.ForeColor = System.Drawing.Color.Red;
+                }
+                else
                 {
                     MessageBox.Show($"Welcome {username}");
                     Login login = new Login();
                     Students students = new Students();
                     login.Hide();
                     students.Show();
-                }
-                else
-                {
-                    msg.Visible = true;
-                    msg.Text = "Wrong Username Or Password";
-                    msg.ForeColor = System.Drawing.Color.Red;
-                    Username.ForeColor = System.Drawing.Color.Red;
-                    Password.ForeColor = System.Drawing.Color.Red;
                 }
                 sr.Close();
                 fs.Close();

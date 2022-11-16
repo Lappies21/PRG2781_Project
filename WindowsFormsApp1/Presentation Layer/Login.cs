@@ -59,7 +59,7 @@ namespace WindowsFormsApp1.Presentation_Layer
         private void btnLogin_Click(object sender, EventArgs e)
         {
             FileHandler fh = new FileHandler();
-            fh.Read(txtUsername.Text,txtPassword.Text,lblMessage,txtUsername,txtPassword);
+            fh.Read(txtUsername.Text,txtPassword.Text,lblMessage,txtUsername,txtPassword,txtConfirmPassword);
         }
     }
 }

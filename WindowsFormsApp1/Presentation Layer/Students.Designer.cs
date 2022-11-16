@@ -40,8 +40,6 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvStudents = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbGender = new System.Windows.Forms.ComboBox();
@@ -60,9 +58,10 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.lblFileName = new System.Windows.Forms.Label();
             this.btnModules = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
+            this.btnViewImage = new System.Windows.Forms.Button();
+            this.dgvStudents = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pbSutdentImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSearch
@@ -176,25 +175,6 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgvStudents);
-            this.groupBox1.Location = new System.Drawing.Point(334, 22);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(677, 400);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Data";
-            // 
-            // dgvStudents
-            // 
-            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudents.Location = new System.Drawing.Point(6, 19);
-            this.dgvStudents.Name = "dgvStudents";
-            this.dgvStudents.Size = new System.Drawing.Size(665, 375);
-            this.dgvStudents.TabIndex = 0;
-            this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             // 
             // groupBox2
             // 
@@ -370,11 +350,34 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
+            // btnViewImage
+            // 
+            this.btnViewImage.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnViewImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewImage.Location = new System.Drawing.Point(237, 198);
+            this.btnViewImage.Name = "btnViewImage";
+            this.btnViewImage.Size = new System.Drawing.Size(82, 23);
+            this.btnViewImage.TabIndex = 65;
+            this.btnViewImage.Text = "View Image";
+            this.btnViewImage.UseVisualStyleBackColor = true;
+            this.btnViewImage.Click += new System.EventHandler(this.btnViewImage_Click);
+            // 
+            // dgvStudents
+            // 
+            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudents.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgvStudents.Location = new System.Drawing.Point(346, 31);
+            this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.Size = new System.Drawing.Size(665, 375);
+            this.dgvStudents.TabIndex = 66;
+            // 
             // Students
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1023, 485);
+            this.Controls.Add(this.dgvStudents);
+            this.Controls.Add(this.btnViewImage);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnModules);
             this.Controls.Add(this.lblFileName);
@@ -402,14 +405,12 @@ namespace WindowsFormsApp1.Presentation_Layer
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnView);
             this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "Students";
             this.Text = "Students";
             this.Load += new System.EventHandler(this.Students_Load);
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSutdentImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,8 +428,6 @@ namespace WindowsFormsApp1.Presentation_Layer
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvStudents;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbGender;
@@ -447,5 +446,7 @@ namespace WindowsFormsApp1.Presentation_Layer
         private System.Windows.Forms.Label lblFileName;
         private System.Windows.Forms.Button btnModules;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Button btnViewImage;
+        private System.Windows.Forms.DataGridView dgvStudents;
     }
 }
